@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+d<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.net.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,8 +9,8 @@
 </head>
 </head>
 <body>
-<h1 align="center">Welcome to AadhyaDevOps technologies. Hyderabad,Telangana </h1>
-<h1 align="center"> AadhyaDevOps technologies- Very Good Training center for DevOps with AWS in Maratha Halli Bangalore India and also for Job Assitance Job Support also...Teaching Real Time scnerios</h1>
+<h1 align="center">Welcome to AadhyaDevOpsTraining Technologies. Hyderabad,Telangana </h1>
+<h1 align="center"> AadhyaDevOpsTraining Technologies- Very Good Training center for DevOps with AWS in Lingampalli, Hyderabad  India and also for Job Assitance Job Support also...Teaching Real Time scnerios</h1>
 <hr>
 <br>
 	<h1><h3> Server Side IP Address </h3><br>
@@ -40,7 +40,7 @@ out.println("Server Host Name :: "+inetAddress.getHostName());
 		+91-8747928434
 		aadhyadevopstraining@gmail.com
 		<br>
-		<a href="mailto:aadhyadevopstraining@gmail.com">Mail to Mithun Technologies</a>
+		<a href="mailto:aadhyadevopstraining@gmail.com">Mail to AadhyaDevOpsTraining Technologies</a>
 	</span>
 </div>
 <hr>
