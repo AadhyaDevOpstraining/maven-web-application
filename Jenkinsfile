@@ -1,75 +1,32 @@
-pipeline{
+node
 
-agent any
-
-tools{
-maven 'maven3.8.2'
-
-}
-
-triggers{
-pollSCM('* * * * *')
-}
-
-options{
-timestamps()
-buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5'))
-}
-
-stages{
-
-  stage('CheckOutCode'){
-    steps{
-    git branch: 'development', credentialsId: '957b543e-6f77-4cef-9aec-82e9b0230975', url: 'https://github.com/devopstrainingblr/maven-web-application-1.git'
-	
-	}
-  }
-  
-  stage('Build'){
-  steps{
-  sh  "mvn clean package"
-  }
-  }
-/*
- stage('ExecuteSonarQubeReport'){
-  steps{
-  sh  "mvn clean sonar:sonar"
-  }
-  }
-  
-  stage('UploadArtifactsIntoNexus'){
-  steps{
-  sh  "mvn clean deploy"
-  }
-  }
-  
-  stage('DeployAppIntoTomcat'){
-  steps{
-  sshagent(['bfe1b3c1-c29b-4a4d-b97a-c068b7748cd0']) {
-   sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@35.154.190.162:/opt/apache-tomcat-9.0.50/webapps/"    
-  }
-  }
-  }
-  */
-}//Stages Closing
-
-post{
-
- success{
- emailext to: 'devopstrainingblr@gmail.com,mithuntechnologies@yahoo.com',
-          subject: "Pipeline Build is over .. Build # is ..${env.BUILD_NUMBER} and Build status is.. ${currentBuild.result}.",
-          body: "Pipeline Build is over .. Build # is ..${env.BUILD_NUMBER} and Build status is.. ${currentBuild.result}.",
-          replyTo: 'devopstrainingblr@gmail.com'
- }
+{
+ properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
  
- failure{
- emailext to: 'devopstrainingblr@gmail.com,mithuntechnologies@yahoo.com',
-          subject: "Pipeline Build is over .. Build # is ..${env.BUILD_NUMBER} and Build status is.. ${currentBuild.result}.",
-          body: "Pipeline Build is over .. Build # is ..${env.BUILD_NUMBER} and Build status is.. ${currentBuild.result}.",
-          replyTo: 'devopstrainingblr@gmail.com'
+ stage('checkout')
+ {
+ git branch: 'dev', credentialsId: 'fe3318e5-7cce-4a2e-8f22-259a3250e29f', url: 'https://github.com/AadhyaDevOpstraining/maven-web-application.git'
+ } 
+ /*
+ stage('build')
+ {
+ sh "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven3.8.6/bin/mvn clean package"
+ } 
+ stage('ExcuteSonarqubereport')
+ {
+ sh "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven3.8.6/bin/mvn sonar:sonar"
+ }
+ stage('uplode artifact to nexus')
+ {
+ sh "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven3.8.6/bin/mvn deploy"
+ }
+ */
+ stage('Send email notification')
+ {
+ emailext body: '''build over
+
+ Thanks,
+ Mallikarjun''', subject: 'Build over', to: 'aadhyadevopstraining@gmail.com'
  }
  
 }
-
-
-}//Pipeline closing
