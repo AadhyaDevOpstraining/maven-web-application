@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>AadhyaDevops Technologies Releases Nexus Repository</name>
-	      <url>http://18.216.229.111:8081/repository/sbi-web-application.release/</url>
+	      <url>http://18.218.31.83:8081/repository/sbi-web-application.release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>AadhyaDevOps Technologies Snapshot Nexus Repository</name>
-	      <url>http://18.216.229.111:8081/repository/sbi-web-application-snapshot/</url>
+	      <url>http://18.218.31.83:8081/repository/sbi-web-application-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
