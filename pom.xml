@@ -104,7 +104,7 @@
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>AadhyaDevOps Technologies Snapshot Nexus Repository</name>
-	      <url>http://18.218.31.83:8081/repository/sbi-web-application-snapshot/</url>
+	      <url>http://3.145.186.156:8081/repository/sbi-web-application-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
