@@ -27,15 +27,6 @@ maven 'maven3.8.6'
      sh "mvn deploy"
     }
    }
-*/   
-   // stage('deploytomcat'){
-    // steps{
-	//   sshagent(['aeb46196-e995-48fa-bdef-2f048312f853']) {
-     //  sh "scp -o StrictHostKeyChecking:no target/maven-web-application.war ec2-user@3.145.218.122:/opt/apache-tomcat-9.0.68/webapps/"
-     //}
-   // }
-  //}
-/*
  }
  
 post{
