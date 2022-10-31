@@ -1,0 +1,67 @@
+pipeline{
+
+agent any
+
+tools{
+maven 'maven3.8.6'
+}
+
+ stages{
+   stage('checkout'){
+     steps{
+    git branch: 'dev', credentialsId: 'fe3318e5-7cce-4a2e-8f22-259a3250e29f', url: 'https://github.com/AadhyaDevOpstraining/maven-web-application.git'
+    }
+   }
+   stage('build'){
+     steps{
+     sh "mvn clean package"
+    }
+   }
+   stage('ExcuteSonarQubeReport'){
+     steps{
+     sh "mvn sonar:sonar"
+    }
+   }
+   stage('UploadeArtifactory'){
+     steps{
+     sh "mvn deploy"
+    }
+   }
+*/   
+   // stage('deploytomcat'){
+    // steps{
+	//   sshagent(['aeb46196-e995-48fa-bdef-2f048312f853']) {
+     //  sh "scp -o StrictHostKeyChecking:no target/maven-web-application.war ec2-user@3.145.218.122:/opt/apache-tomcat-9.0.68/webapps/"
+     //}
+   // }
+  //}
+/*
+ }
+ 
+post{
+
+
+ success{
+ emailext body: '''build over
+
+ Thanks,
+ Mallikarjun''', subject: 'Build over', to: 'aadhyadevopstraining@gmail.com'
+ }
+ 
+ failure{
+ emailext body: '''build over
+
+ Thanks,
+ Mallikarjun''', subject: 'Build over', to: 'aadhyadevopstraining@gmail.com'
+ }
+ always{
+ emailext body: '''build over
+
+ Thanks,
+ Mallikarjun''', subject: 'Build over', to: 'aadhyadevopstraining@gmail.com'
+ }
+ 
+ }
+
+
+}
